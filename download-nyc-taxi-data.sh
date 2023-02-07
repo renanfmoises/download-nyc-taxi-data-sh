@@ -70,10 +70,11 @@ if [ -z "$color" ]; then
   exit 1
 fi
 
-if [ "$color" != "yellow" ] && [ "$color" != "green" ]; then
-  echo "ERROR: Invalid color argument. Must be either 'yellow' or 'green'."
-  exit 1
-fi
+case $color in
+  yellow | green) ;;
+  *) echo "ERROR: Invalid color argument. Must be either 'yellow' or 'green'."
+     exit 1;;
+esac
 
 # Check for years_and_months argument
 if [ -z "$years_and_months" ]; then
@@ -111,8 +112,16 @@ for year_month in "${year_month_array[@]}"; do
     if [ -f "$file_destination" ] && [ "$overwrite" = false ]; then
       echo "File already exists and overwrite flag not set, skipping $file_destination"
     else
-      echo "Downloading $file_url to $file_destination"
-      wget "$file_url" -O "$file_destination"
+      file_name="${file_url##*/}"
+      file_destination_dir="${file_destination%/*}"
+      echo "[INFO] Downloading $file_name to $file_destination_dir"
+      wget --spider --no-verbose "$file_url"  # Check if file exists before downloading
+      if [ $? -ne 0 ]; then
+        echo "ERROR: File does not exist at $file_url"
+        exit 1
+      fi
+      wget -q --show-progress "$file_url" -O "$file_destination"
+      echo ""
     fi
 
   # Case: Single year specified (e.g., 2019)
@@ -143,14 +152,18 @@ for year_month in "${year_month_array[@]}"; do
       if [ -f "$file_destination" ] && [ "$overwrite" = false ]; then
         echo "File already exists and overwrite flag not set, skipping $file_destination"
       else
-        echo "Downloading $file_url to $file_destination"
+        file_name = "${file_url##*/}"
+        file_destination_dir="${file_destination%/*}"
+        echo "[INFO] Downloading $file_name to $file_destination"
         wget --spider --no-verbose "$file_url"  # Check if file exists before downloading
         if [ $? -ne 0 ]; then
           echo "ERROR: File does not exist at $file_url"
           exit 1
         fi
-        wget --no-verbose "$file_url" -O "$file_destination"
+        wget -q --show-progress "$file_url" -O "$file_destination"
+        echo ""
       fi
     done
   fi
+  echo "[INFO] Download complete"
 done
