@@ -28,9 +28,12 @@
 #####                     files that already exist.
 #####
 ##### EXAMPLES
-#####        ./download_taxi_data.sh yellow 2019,2020 data_lake --overwrite
-#####        ./download_taxi_data.sh yellow 2019-01,2019-02,2019-03 data_lake --overwrite
-#####        ./download_taxi_data.sh yellow 2019-01 data_lake --overwrite
+#####        ./download-nyc-taxi-data.sh yellow 2019,2020 data_lake --overwrite
+#####        ./download-nyc-taxi-data.sh yellow 2019-01,2019-02,2019-03 data_lake --overwrite
+#####        ./download-nyc-taxi-data.sh yellow 2019-01
+#####
+##### VERSION
+#####     1.0.0 (2023-02-07)
 #####
 ##### AUTHOR
 #####     Written by: Renan Moises
