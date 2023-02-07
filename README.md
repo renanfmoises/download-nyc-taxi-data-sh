@@ -27,7 +27,7 @@
 2. Make the script file executable by running the following command in your terminal:
 
     ```bash
-    chmod +x [script-file-name].sh
+    chmod +x download-nyc-taxi-data.sh
     ```
 
 3. Run the script with the required arguments.
