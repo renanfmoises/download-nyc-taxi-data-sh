@@ -31,6 +31,9 @@
 #####        ./download-nyc-taxi-data.sh yellow 2019-01,2019-02,2019-03 data_lake --overwrite
 #####        ./download-nyc-taxi-data.sh yellow 2019-01
 #####
+##### VERSION
+#####        1.0.0 (07 Feb 2022)
+#####
 ##### AUTHOR
 #####     Written by: Renan Moises
 #####
