@@ -168,4 +168,4 @@ for year_month in "${year_month_array[@]}"; do
     done
   fi
 done
-echo "[INFO] Download complete"
+echo "[INFO] Finished downloading $color taxi trip data."
