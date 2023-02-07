@@ -92,4 +92,4 @@ BASE_DIR/
 
 ## Author
 
-Renan Moises
+[Renan Moises](https://github.com/renanfmoises/)
