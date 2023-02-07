@@ -32,7 +32,7 @@
 #####        ./download-nyc-taxi-data.sh yellow 2019-01
 #####
 ##### VERSION
-#####        1.0.0 (07 Feb 2022)
+#####        1.0.0 (07 Feb 2023)
 #####
 ##### AUTHOR
 #####     Written by: Renan Moises
