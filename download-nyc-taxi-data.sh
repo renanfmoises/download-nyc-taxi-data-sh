@@ -33,7 +33,7 @@
 #####        ./download_taxi_data.sh yellow 2019-01 data_lake --overwrite
 #####
 ##### AUTHOR
-#####
+#####     Written by: Renan Moises
 #####
 ##########################################################################################################################
 ##########################################################################################################################
@@ -64,6 +64,22 @@ if [ "$BASE_DIR" == "--overwrite" ]; then
   exit 1
 fi
 
+# Check for color argument
+if [ -z "$color" ]; then
+  echo "ERROR: Color argument not provided."
+  exit 1
+fi
+
+if [ "$color" != "yellow" ] && [ "$color" != "green" ]; then
+  echo "ERROR: Invalid color argument. Must be either 'yellow' or 'green'."
+  exit 1
+fi
+
+# Check for years_and_months argument
+if [ -z "$years_and_months" ]; then
+  echo "ERROR: Years and months argument not provided."
+  exit 1
+fi
 
 # Split the year-month values into an array
 IFS=',' read -r -a year_month_array <<< "$years_and_months"
@@ -128,7 +144,12 @@ for year_month in "${year_month_array[@]}"; do
         echo "File already exists and overwrite flag not set, skipping $file_destination"
       else
         echo "Downloading $file_url to $file_destination"
-        wget "$file_url" -O "$file_destination"
+        wget --spider --no-verbose "$file_url"  # Check if file exists before downloading
+        if [ $? -ne 0 ]; then
+          echo "ERROR: File does not exist at $file_url"
+          exit 1
+        fi
+        wget --no-verbose "$file_url" -O "$file_destination"
       fi
     done
   fi
