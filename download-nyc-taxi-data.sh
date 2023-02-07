@@ -1,37 +1,42 @@
 #!/bin/bash
 
-#######################################################
-#######################################################
-
-# DOWNLOAD_TAXI_DATA(1)
-# NAME
-#        download_taxi_data - script to download taxi trip data and save it in parquet format
-
-# SYNOPSIS
-#        ./download_taxi_data.sh <color> <year> <base_dir> [--overwrite]
-
-# DESCRIPTION
-#        This script downloads taxi trip data from the specified URL and saves it to the specified destination directory in parquet format. The destination directory has a structure: 
-#        BASE_DIR/raw/parquet/<color>/YEAR=<year>/MONTH=<month>
-
-#        color: The color of the taxi trip data to download.
-
-#        year: The year and month of the data to download, comma-separated values. For example, 2019,2020 or 2019-01,2019-02,2019-03 or 2019-01.
-
-#        base_dir: The base directory to save the data, default is data_lake.
-
-#        --overwrite: The optional flag to overwrite existing files. If not set, the script will skip files that already exist.
-
-# EXAMPLES
-#        ./download_taxi_data.sh yellow 2019,2020 data_lake --overwrite
-#        ./download_taxi_data.sh yellow 2019-01,2019-02,2019-03 data_lake --overwrite
-#        ./download_taxi_data.sh yellow 2019-01 data_lake --overwrite
-
-# AUTHOR
-#        Renan Moises
-
-#######################################################
-#######################################################
+##########################################################################################################################
+##########################################################################################################################
+#####
+#####
+##### DOWNLOAD_NYC_TAXI_DATA(1)
+#####
+##### NAME
+#####        download_nyc_taxi_data - script to download taxi trip data and save it in parquet format
+#####
+##### SYNOPSIS
+#####        ./download_taxi_data.sh <color> <year> <base_dir> [--overwrite]
+#####
+##### DESCRIPTION
+#####        This script downloads taxi trip data from the specified URL and saves it to the specified
+#####        destination directory in parquet format. The destination directory has a structure:
+#####        BASE_DIR/raw/parquet/<color>/YEAR=<year>/MONTH=<month>
+#####
+#####        color: The color of the taxi trip data to download.
+#####
+#####        year: The year and month of the data to download, comma-separated values.
+#####              For example, 2019,2020 or 2019-01,2019-02,2019-03 or 2019-01.
+#####
+#####        base_dir: The base directory to save the data, default is data_lake.
+#####
+#####        --overwrite: The optional flag to overwrite existing files. If not set, the script will skip
+#####                     files that already exist.
+#####
+##### EXAMPLES
+#####        ./download_taxi_data.sh yellow 2019,2020 data_lake --overwrite
+#####        ./download_taxi_data.sh yellow 2019-01,2019-02,2019-03 data_lake --overwrite
+#####        ./download_taxi_data.sh yellow 2019-01 data_lake --overwrite
+#####
+##### AUTHOR
+#####
+#####
+##########################################################################################################################
+##########################################################################################################################
 
 
 # URL to download taxi trip data
