@@ -6,10 +6,10 @@
 ##### DOWNLOAD_NYC_TAXI_DATA(1)
 #####
 ##### NAME
-#####        download_nyc_taxi_data - script to download taxi trip data and save it in parquet format
+#####        download-nyc-taxi-data.sh - script to download taxi trip data and save it in parquet format
 #####
 ##### SYNOPSIS
-#####        ./download_taxi_data.sh <color> <year> <base_dir> [--overwrite]
+#####        ./download-nyc-taxi-data.sh <color> <year> <base_dir> [--overwrite]
 #####
 ##### DESCRIPTION
 #####        This script downloads taxi trip data from the specified URL and saves it to the specified
@@ -27,12 +27,9 @@
 #####                     files that already exist.
 #####
 ##### EXAMPLES
-#####        ./download-nyc-taxi-data.sh yellow 2019,2020 data_lake --overwrite
+#####        ./download-nyc-taxi-data.sh yellow 2019,2020 myDataDir --overwrite
 #####        ./download-nyc-taxi-data.sh yellow 2019-01,2019-02,2019-03 data_lake --overwrite
 #####        ./download-nyc-taxi-data.sh yellow 2019-01
-#####
-##### VERSION
-#####     1.0.0 (2023-02-07)
 #####
 ##### AUTHOR
 #####     Written by: Renan Moises
