@@ -165,5 +165,5 @@ for year_month in "${year_month_array[@]}"; do
       fi
     done
   fi
-  echo "[INFO] Download complete"
 done
+echo "[INFO] Download complete"
