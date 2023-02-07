@@ -112,18 +112,18 @@ for year_month in "${year_month_array[@]}"; do
 
     # Check if file already exists and overwrite flag is not set
     if [ -f "$file_destination" ] && [ "$overwrite" = false ]; then
-      echo "File already exists and overwrite flag not set, skipping $file_destination"
+      echo "[INFO] File already exists and overwrite flag not set, skipping $file_destination"
     else
       file_name="${file_url##*/}"
       file_destination_dir="${file_destination%/*}"
       echo "[INFO] Downloading $file_name to $file_destination_dir"
       wget --spider --no-verbose "$file_url"  # Check if file exists before downloading
       if [ $? -ne 0 ]; then
-        echo "ERROR: File does not exist at $file_url"
-        exit 1
+        echo "[WARNING] File does not exist at $file_url. Skipping."
+      else
+        wget -q --show-progress "$file_url" -O "$file_destination"
+        echo ""
       fi
-      wget -q --show-progress "$file_url" -O "$file_destination"
-      echo ""
     fi
 
   # Case: Single year specified (e.g., 2019)
@@ -152,18 +152,18 @@ for year_month in "${year_month_array[@]}"; do
 
       # Check if file already exists and overwrite flag is not set
       if [ -f "$file_destination" ] && [ "$overwrite" = false ]; then
-        echo "File already exists and overwrite flag not set, skipping $file_destination"
+        echo "[INFO] File already exists and overwrite flag not set, skipping $file_destination"
       else
         file_name = "${file_url##*/}"
         file_destination_dir="${file_destination%/*}"
         echo "[INFO] Downloading $file_name to $file_destination"
         wget --spider --no-verbose "$file_url"  # Check if file exists before downloading
         if [ $? -ne 0 ]; then
-          echo "ERROR: File does not exist at $file_url"
-          exit 1
+          echo "[WARNING] File does not exist at $file_url. Skipping."
+        else
+          wget -q --show-progress "$file_url" -O "$file_destination"
+          echo ""
         fi
-        wget -q --show-progress "$file_url" -O "$file_destination"
-        echo ""
       fi
     done
   fi
