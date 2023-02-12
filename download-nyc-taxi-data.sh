@@ -154,8 +154,8 @@ for year_month in "${year_month_array[@]}"; do
       if [ -f "$file_destination" ] && [ "$overwrite" = false ]; then
         echo "[INFO] File already exists and overwrite flag not set, skipping $file_destination"
       else
-        file_name = "${file_url##*/}"
-        file_destination_dir="${file_destination%/*}"
+        file_name="${file_url##*/}"
+		file_destination_dir="${file_destination%/*}"
         echo "[INFO] Downloading $file_name to $file_destination"
         wget --spider --no-verbose "$file_url"  # Check if file exists before downloading
         if [ $? -ne 0 ]; then
@@ -168,4 +168,3 @@ for year_month in "${year_month_array[@]}"; do
     done
   fi
 done
-
